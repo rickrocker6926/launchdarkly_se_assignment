@@ -1,0 +1,16 @@
+import time
+import ldclient
+from ldclient.config import Config
+ldclient.set_config(Config("sdk-6ecdad50-75af-4ee0-bf56-7e7ebb44b18b"))
+ld_client = ldclient.get()
+
+while True:
+    show_feature = ld_client.variation("demo_flag", {"key": "ravdeep.rana@gmail.com"}, False)
+    if show_feature:
+        # application code to show the feature
+        print("feature is on")
+        time.sleep(2)
+    else:
+        # the code to run if the feature is off
+        print("feature is off")
+        time.sleep(2)
